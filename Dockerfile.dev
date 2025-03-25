@@ -8,6 +8,7 @@ ARG NODE_VERSION="20.17"
 
 # Base image
 FROM docker.io/node:${NODE_VERSION}-alpine3.19 AS base
+RUN mkdir -p ~/.ssh && ssh-keyscan github.com >> ~/.ssh/known_hosts
 
 ## Just reduce unccessary noise in the logs.
 ENV NPM_CONFIG_UPDATE_NOTIFIER=false
